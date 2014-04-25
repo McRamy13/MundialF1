@@ -7,20 +7,18 @@
 package mundialf1;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -55,10 +53,11 @@ public class Mundial implements Serializable {
     private Boolean puntosUltimaCarrera;
     @Column(name = "puntos_totales")
     private Integer puntosTotales;
+    @Lob
+    @Column(name = "observaciones")
+    private String observaciones;
     @Column(name = "cod_escuderia")
     private Integer codEscuderia;
-    @OneToMany(mappedBy = "idPiloto")
-    private Collection<Escuderia> escuderiaCollection;
 
     public Mundial() {
     }
@@ -115,21 +114,20 @@ public class Mundial implements Serializable {
         this.puntosTotales = puntosTotales;
     }
 
+    public String getObservaciones() {
+        return observaciones;
+    }
+
+    public void setObservaciones(String observaciones) {
+        this.observaciones = observaciones;
+    }
+
     public Integer getCodEscuderia() {
         return codEscuderia;
     }
 
     public void setCodEscuderia(Integer codEscuderia) {
         this.codEscuderia = codEscuderia;
-    }
-
-    @XmlTransient
-    public Collection<Escuderia> getEscuderiaCollection() {
-        return escuderiaCollection;
-    }
-
-    public void setEscuderiaCollection(Collection<Escuderia> escuderiaCollection) {
-        this.escuderiaCollection = escuderiaCollection;
     }
 
     @Override

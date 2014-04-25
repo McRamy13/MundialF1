@@ -32,6 +32,7 @@ public class Main extends javax.swing.JFrame {
         query1 = java.beans.Beans.isDesignTime() ? null : entityManager1.createQuery("SELECT m FROM Mundial m");
         list1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : query1.getResultList();
         jButton1 = new javax.swing.JButton();
+        panelF13 = new mundialf1.PanelF1();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -49,31 +50,38 @@ public class Main extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(317, Short.MAX_VALUE))
+                .addContainerGap(452, Short.MAX_VALUE))
+            .addComponent(panelF13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
-                .addContainerGap(266, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(panelF13, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Mundial mundial = new Mundial();
         for(int i=0; i<list1.size(); i++){
-            Mundial f1 = list1.get(i);
-            System.out.println(f1.getIdPiloto());
-            System.out.println(f1.getNombrePiloto());
-            System.out.println(f1.getPuntosTotales());
-            System.out.println(f1.getPuntosUltimaCarrera());
-            System.out.println(f1.getFechaNac());
-            System.out.println(f1.getNacionalidad());
-
-        }
-        
+             mundial = list1.get(i);
+             
+            
+            
+            System.out.println(mundial.getIdPiloto());
+            System.out.println(mundial.getNombrePiloto());
+            System.out.println(mundial.getPuntosTotales());
+            System.out.println(mundial.getPuntosUltimaCarrera());
+            System.out.println(mundial.getFechaNac());
+            System.out.println(mundial.getNacionalidad());
+            
+       }
+        panelF13.setMundial(mundial); 
+        panelF13.showData();
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -116,6 +124,7 @@ public class Main extends javax.swing.JFrame {
     private javax.persistence.EntityManager entityManager1;
     private javax.swing.JButton jButton1;
     private java.util.List<Mundial> list1;
+    private mundialf1.PanelF1 panelF13;
     private javax.persistence.Query query1;
     // End of variables declaration//GEN-END:variables
 }
