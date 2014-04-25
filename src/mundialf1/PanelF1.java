@@ -32,13 +32,13 @@ public class PanelF1 extends javax.swing.JPanel {
     public void showData(){
         //Poner los datos de la misma manera. 
         jTextFieldIdPiloto.setText(String.valueOf(mundial.getIdPiloto()));
-        jTextFieldNombre.setText(String.valueOf(mundial.getNombrePiloto()));
-        jTextFieldNacionalidad.setText(String.valueOf(mundial.getNacionalidad()));
+        jTextFieldNombre.setText(mundial.getNombrePiloto());
+        jTextFieldNacionalidad.setText(mundial.getNacionalidad());
         jTextFieldFechaNac.setText(String.valueOf(mundial.getFechaNac()));
         jTextFieldPuntTotales.setText(String.valueOf(mundial.getPuntosTotales()));
         jTextFieldPuntosUltCarrera.setText(String.valueOf(mundial.getPuntosUltimaCarrera()));
         jTextFieldCodEscuderia.setText(String.valueOf(mundial.getCodEscuderia()));
-        jTextAreaObservaciones.setText(String.valueOf(mundial.getObservaciones()));
+        jTextAreaObservaciones.setText(mundial.getObservaciones());
     }
 
     /**
