@@ -29,6 +29,8 @@ public class DateRenderer extends DefaultTableCellRenderer {
             result = formatofecha.format(dateValue);
         }
         super.setValue(result);
+        
+        
     }
 
 }
