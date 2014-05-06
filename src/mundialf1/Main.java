@@ -6,6 +6,11 @@
 
 package mundialf1;
 
+
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+
 /**
  *
  * @author usuario
@@ -15,11 +20,32 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+    
     public Main() {
         initComponents();
+         
+        //Asignar la lista de datos a la tabla
         ModeloTabla modelo = new ModeloTabla();
         modelo.setDataList(list1);
         jTable1.setModel(modelo);
+        //Sólo se permite seleccionar un registro
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        //Detectar cambio de selección en la tabla
+        
+        jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int indiceFilaSeleccionada = jTable1.getSelectedRow();
+                Mundial mundial = new Mundial();
+                mundial = list1.get(indiceFilaSeleccionada);
+                panelF13.setMundial(mundial); 
+                panelF13.showData();
+            }
+            
+        });
+        jTable1.getColumnModel().getColumn(1).setCellRenderer(new DateRenderer());
+        
     }
 
     /**
@@ -34,19 +60,11 @@ public class Main extends javax.swing.JFrame {
         entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("MundialF1PU").createEntityManager();
         query1 = java.beans.Beans.isDesignTime() ? null : entityManager1.createQuery("SELECT m FROM Mundial m");
         list1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : query1.getResultList();
-        jButton1 = new javax.swing.JButton();
         panelF13 = new mundialf1.PanelF1();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -69,9 +87,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(panelF13, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,8 +95,7 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(29, 29, 29)
                         .addComponent(jScrollPane1))
                     .addComponent(panelF13, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
                 .addContainerGap())
@@ -88,26 +103,6 @@ public class Main extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        Mundial mundial = new Mundial();
-        for(int i=0; i<list1.size(); i++){
-             mundial = list1.get(i);
-             
-            
-            
-            System.out.println(mundial.getIdPiloto());
-            System.out.println(mundial.getNombrePiloto());
-            System.out.println(mundial.getPuntosTotales());
-            System.out.println(mundial.getPuntosUltimaCarrera());
-            System.out.println(mundial.getFechaNac());
-            System.out.println(mundial.getNacionalidad());
-            
-       }
-        panelF13.setMundial(mundial); 
-        panelF13.showData();
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -146,7 +141,6 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager entityManager1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private java.util.List<Mundial> list1;
