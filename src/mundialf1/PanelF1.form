@@ -63,20 +63,30 @@
                           </Group>
                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jTextFieldCodEscuderia" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="jTextFieldPuntTotales" min="-2" pref="100" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jTextFieldCodEscuderia" min="-2" pref="100" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabelPuntosUltimaCarrera" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jTextFieldPuntosUltCarrera" min="-2" pref="100" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jTextFieldFechaNac" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="jTextFieldNacionalidad" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="jTextFieldNombre" min="-2" pref="200" max="-2" attributes="0"/>
-                              <Component id="jTextFieldIdPiloto" min="-2" pref="99" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIdPiloto" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                              <Component id="jTextFieldNacionalidad" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Component id="jTextFieldNombre" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
+                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="jTextFieldPuntTotales" pref="100" max="32767" attributes="0"/>
+                                  <Component id="jDateChooser1" max="32767" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="jTextFieldPuntosUltCarrera" min="-2" pref="100" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="129" max="32767" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel2" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
@@ -92,44 +102,56 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelIdPiloto" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldIdPiloto" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelFechaNac" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldFechaNac" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabelPuntosTotales" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldPuntTotales" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jLabelPuntosUltimaCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldPuntosUltCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabelIdPiloto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldIdPiloto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabelNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jTextFieldNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabelFechaNac" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabelPuntosTotales" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldPuntTotales" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="3" pref="3" max="-2" attributes="0"/>
+                          <Component id="jLabel2" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelCodEscuderia" min="-2" max="-2" attributes="0"/>
-                      <Component id="jTextFieldCodEscuderia" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jTextFieldCodEscuderia" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabelPuntosUltimaCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTextFieldPuntosUltCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="174" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="202" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="jScrollPane1" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="216" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -178,8 +200,6 @@
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldNacionalidad">
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldFechaNac">
-        </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldPuntosUltCarrera">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldPuntTotales">
@@ -206,6 +226,10 @@
             </Component>
           </SubComponents>
         </Container>
+        <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser1">
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel2">
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>

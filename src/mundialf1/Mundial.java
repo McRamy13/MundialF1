@@ -11,6 +11,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -39,13 +41,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Mundial implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id_piloto")
     private Integer idPiloto;
     @Column(name = "nombre_piloto")
     private String nombrePiloto;
     @Column(name = "nacionalidad")
-    private String nacionalidad;
+    private Integer nacionalidad;
     @Column(name = "fecha_nac")
     @Temporal(TemporalType.DATE)
     private Date fechaNac;
@@ -82,11 +85,11 @@ public class Mundial implements Serializable {
         this.nombrePiloto = nombrePiloto;
     }
 
-    public String getNacionalidad() {
+    public Integer getNacionalidad() {
         return nacionalidad;
     }
 
-    public void setNacionalidad(String nacionalidad) {
+    public void setNacionalidad(Integer nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
 

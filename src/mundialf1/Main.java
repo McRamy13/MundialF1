@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package mundialf1;
-
 
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -20,32 +18,37 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
-    
+    ModeloTabla modelo = new ModeloTabla();
     public Main() {
         initComponents();
-         
+
         //Asignar la lista de datos a la tabla
-        ModeloTabla modelo = new ModeloTabla();
+        
         modelo.setDataList(list1);
         jTable1.setModel(modelo);
         //Sólo se permite seleccionar un registro
         jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         //Detectar cambio de selección en la tabla
-        
+
         jTable1.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int indiceFilaSeleccionada = jTable1.getSelectedRow();
+                if(indiceFilaSeleccionada != -1){
                 Mundial mundial = new Mundial();
                 mundial = list1.get(indiceFilaSeleccionada);
-                panelF13.setMundial(mundial); 
-                panelF13.showData();
+                panelF11.setMundial(mundial);
+                panelF11.showData();
+                }
             }
-            
+
         });
         jTable1.getColumnModel().getColumn(1).setCellRenderer(new DateRenderer());
-        
+        jTable1.getColumnModel().getColumn(4).setCellRenderer(new PuntosRenderer());
+        jTable1.getColumnModel().getColumn(0).setCellRenderer(new NombreRenderer());
+        jTable1.getColumnModel().getColumn(2).setCellRenderer(new NacionalidadRenderer());
+
     }
 
     /**
@@ -60,12 +63,15 @@ public class Main extends javax.swing.JFrame {
         entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("MundialF1PU").createEntityManager();
         query1 = java.beans.Beans.isDesignTime() ? null : entityManager1.createQuery("SELECT m FROM Mundial m");
         list1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : query1.getResultList();
-        panelF13 = new mundialf1.PanelF1();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jToolBar1 = new javax.swing.JToolBar();
+        jButton1 = new javax.swing.JButton();
+        panelF11 = new mundialf1.PanelF1();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTable1.setBackground(new java.awt.Color(204, 204, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -79,15 +85,30 @@ public class Main extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        jToolBar1.setRollover(true);
+
+        jButton1.setText("Eliminar");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(panelF13, javax.swing.GroupLayout.PREFERRED_SIZE, 508, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap()
+                .addComponent(panelF11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,14 +116,42 @@ public class Main extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane1))
-                    .addComponent(panelF13, javax.swing.GroupLayout.DEFAULT_SIZE, 525, Short.MAX_VALUE))
+                        .addComponent(panelF11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Obtener el índice de la fila seleccionada en la tabla 
+        int selectedRow = jTable1.getSelectedRow();
+        //Obtener el objeto desde la lista de datos, conociendo su posición 
+        Mundial mundial = list1.get(selectedRow);
+
+        //Iniciar una transacción con la BD 
+        entityManager1.getTransaction().begin();
+        //Eliminar el objeto 
+        entityManager1.remove(mundial);
+        //Finalizar la transacción actualizando la BD 
+        entityManager1.getTransaction().commit();
+
+        //Eliminar el objeto de la lista de datos 
+        list1.remove(mundial);
+        //Informar al JTable que se ha eliminado una fila 
+        if(selectedRow != -1){
+           modelo.fireTableRowsDeleted(selectedRow, selectedRow); 
+        }
+        
+        
+        panelF11.setMundial(mundial);
+        panelF11.showData();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,10 +190,12 @@ public class Main extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager entityManager1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JToolBar jToolBar1;
     private java.util.List<Mundial> list1;
-    private mundialf1.PanelF1 panelF13;
+    private mundialf1.PanelF1 panelF11;
     private javax.persistence.Query query1;
     // End of variables declaration//GEN-END:variables
 }

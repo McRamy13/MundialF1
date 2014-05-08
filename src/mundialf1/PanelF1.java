@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package mundialf1;
+
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -15,30 +18,155 @@ public class PanelF1 extends javax.swing.JPanel {
     /**
      * Creates new form PanelF1
      */
-    
+    private final int ALONSO = 1;
+    private final int HAMILTON = 2;
+    private final int ROSBERG = 3;
+    private final int VETTEL = 4;
+    private final int HULKEMBERG = 5;
+    private final int RICCIARDO = 6;
+    private final int BOTTAS = 7;
+    private final int BUTTON = 8;
+    private final int MAGNUSSEN = 9;
+    private final int PEREZ = 10;
+    private final int MASSA = 11;
+    private final int RAIKKONEN = 12;
     private Mundial mundial;
 
-    
     public PanelF1() {
         initComponents();
     }
-     public Mundial getMundial() {
+
+    public Mundial getMundial() {
         return mundial;
     }
 
     public void setMundial(Mundial mundial) {
         this.mundial = mundial;
     }
-    public void showData(){
+
+    public void showData() {
         //Poner los datos de la misma manera. 
         jTextFieldIdPiloto.setText(String.valueOf(mundial.getIdPiloto()));
         jTextFieldNombre.setText(mundial.getNombrePiloto());
-        jTextFieldNacionalidad.setText(mundial.getNacionalidad());
-        jTextFieldFechaNac.setText(String.valueOf(mundial.getFechaNac()));
+        jTextFieldNacionalidad.setText(String.valueOf(mundial.getNacionalidad()));
+        jDateChooser1.setDate(mundial.getFechaNac());
         jTextFieldPuntTotales.setText(String.valueOf(mundial.getPuntosTotales()));
         jTextFieldPuntosUltCarrera.setText(String.valueOf(mundial.getPuntosUltimaCarrera()));
         jTextFieldCodEscuderia.setText(String.valueOf(mundial.getCodEscuderia()));
         jTextAreaObservaciones.setText(mundial.getObservaciones());
+
+        int idPiloto = mundial.getIdPiloto();
+
+        switch (idPiloto) {
+            case ALONSO:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/alonsog.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case HAMILTON:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/hamiltong.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case ROSBERG:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/rosbergg.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case VETTEL:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/vettelg.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case HULKEMBERG:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/hulkenbergg.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case RICCIARDO:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/ricciardog.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case BOTTAS:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/bottasg.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case BUTTON:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/buttong.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case MAGNUSSEN:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/magnusseng.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case PEREZ:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/perezg.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case MASSA:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/massag.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+            case RAIKKONEN:
+                try {
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/kimig.jpg"));
+                    ImageIcon imagen = new ImageIcon(img);
+                    jLabel2.setIcon(imagen);
+
+                } catch (Exception e) {
+                }
+                break;
+        }
     }
 
     /**
@@ -61,13 +189,14 @@ public class PanelF1 extends javax.swing.JPanel {
         jTextFieldIdPiloto = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldNacionalidad = new javax.swing.JTextField();
-        jTextFieldFechaNac = new javax.swing.JTextField();
         jTextFieldPuntosUltCarrera = new javax.swing.JTextField();
         jTextFieldPuntTotales = new javax.swing.JTextField();
         jTextFieldCodEscuderia = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaObservaciones = new javax.swing.JTextArea();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 255));
 
@@ -110,18 +239,24 @@ public class PanelF1 extends javax.swing.JPanel {
                             .addComponent(jLabelCodEscuderia))
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelPuntosUltimaCarrera)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextFieldPuntosUltCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jTextFieldFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabelPuntosUltimaCarrera))
+                            .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 10, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jTextFieldPuntosUltCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 129, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(51, 51, 51)
@@ -132,37 +267,44 @@ public class PanelF1 extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelIdPiloto)
-                    .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNombre)
-                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelNacionalidad)
-                    .addComponent(jTextFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelFechaNac)
-                    .addComponent(jTextFieldFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelPuntosTotales)
-                    .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPuntosUltimaCarrera)
-                    .addComponent(jTextFieldPuntosUltCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelIdPiloto)
+                            .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelNombre)
+                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelNacionalidad)
+                                    .addComponent(jTextFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelFechaNac))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabelPuntosTotales)
+                            .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelCodEscuderia)
-                    .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabelPuntosUltimaCarrera)
+                        .addComponent(jTextFieldPuntosUltCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(0, 174, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1))
+                        .addGap(0, 202, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -186,7 +328,9 @@ public class PanelF1 extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCodEscuderia;
     private javax.swing.JLabel jLabelFechaNac;
     private javax.swing.JLabel jLabelIdPiloto;
@@ -198,7 +342,6 @@ public class PanelF1 extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaObservaciones;
     private javax.swing.JTextField jTextFieldCodEscuderia;
-    private javax.swing.JTextField jTextFieldFechaNac;
     private javax.swing.JTextField jTextFieldIdPiloto;
     private javax.swing.JTextField jTextFieldNacionalidad;
     private javax.swing.JTextField jTextFieldNombre;
