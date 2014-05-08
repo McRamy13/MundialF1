@@ -96,7 +96,7 @@ public class PanelF1 extends javax.swing.JPanel {
                 break;
             case HULKEMBERG:
                 try {
-                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/hulkenbergg.jpg"));
+                    BufferedImage img = ImageIO.read(getClass().getResource("/resources/hulkenberg.jpg"));
                     ImageIcon imagen = new ImageIcon(img);
                     jLabel2.setIcon(imagen);
 
