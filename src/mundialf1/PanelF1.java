@@ -40,6 +40,26 @@ public class PanelF1 extends javax.swing.JPanel {
         return mundial;
     }
 
+    public Mundial newMundial() {
+        Mundial mundial = new Mundial();
+        //Rellenar sus datos
+        mundial.setIdPiloto(Integer.valueOf(jTextFieldIdPiloto.getText()));
+        mundial.setNombrePiloto(jTextFieldNombre.getText());
+        mundial.setFechaNac(jDateChooser1.getDate());
+        mundial.setNacionalidad(Integer.valueOf(jTextFieldNacionalidad.getText()));
+        mundial.setPuntosTotales(Integer.valueOf(jTextFieldPuntTotales.getText()));
+        mundial.setCodEscuderia(Integer.valueOf(jTextFieldIdPiloto.getText()));
+        
+        if(jCheckBox1.isSelected()){
+          mundial.setPuntosUltimaCarrera(true);  
+        }else{
+          mundial.setPuntosUltimaCarrera(false);  
+        }
+        
+
+        return mundial;
+    }
+
     public void setMundial(Mundial mundial) {
         this.mundial = mundial;
     }
@@ -51,9 +71,15 @@ public class PanelF1 extends javax.swing.JPanel {
         jTextFieldNacionalidad.setText(String.valueOf(mundial.getNacionalidad()));
         jDateChooser1.setDate(mundial.getFechaNac());
         jTextFieldPuntTotales.setText(String.valueOf(mundial.getPuntosTotales()));
-        jTextFieldPuntosUltCarrera.setText(String.valueOf(mundial.getPuntosUltimaCarrera()));
         jTextFieldCodEscuderia.setText(String.valueOf(mundial.getCodEscuderia()));
         jTextAreaObservaciones.setText(mundial.getObservaciones());
+        
+        if(mundial.getPuntosUltimaCarrera()){
+            jCheckBox1.setSelected(true);
+        }else{
+           jCheckBox1.setSelected(false); 
+        }
+        
 
         int idPiloto = mundial.getIdPiloto();
 
@@ -166,6 +192,9 @@ public class PanelF1 extends javax.swing.JPanel {
                 } catch (Exception e) {
                 }
                 break;
+                
+            default:
+                jLabel2.setIcon(null);
         }
     }
 
@@ -189,7 +218,6 @@ public class PanelF1 extends javax.swing.JPanel {
         jTextFieldIdPiloto = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldNacionalidad = new javax.swing.JTextField();
-        jTextFieldPuntosUltCarrera = new javax.swing.JTextField();
         jTextFieldPuntTotales = new javax.swing.JTextField();
         jTextFieldCodEscuderia = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -197,10 +225,12 @@ public class PanelF1 extends javax.swing.JPanel {
         jTextAreaObservaciones = new javax.swing.JTextArea();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
-        setBackground(new java.awt.Color(204, 204, 255));
+        setBackground(new java.awt.Color(251, 251, 229));
 
-        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel1.setBackground(new java.awt.Color(254, 254, 244));
+        jPanel1.setForeground(new java.awt.Color(255, 255, 204));
 
         jLabelIdPiloto.setText("Id Piloto:");
 
@@ -217,6 +247,8 @@ public class PanelF1 extends javax.swing.JPanel {
         jLabelCodEscuderia.setText("Código de escudería");
 
         jLabel1.setText("Observaciones:");
+
+        jScrollPane1.setBackground(new java.awt.Color(153, 255, 153));
 
         jTextAreaObservaciones.setColumns(20);
         jTextAreaObservaciones.setRows(5);
@@ -243,20 +275,21 @@ public class PanelF1 extends javax.swing.JPanel {
                                 .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabelPuntosUltimaCarrera))
-                            .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldNombre, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextFieldPuntosUltCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 129, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())))
+                                .addContainerGap())
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jCheckBox1)
+                                .addGap(0, 281, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(51, 51, 51)
@@ -267,7 +300,7 @@ public class PanelF1 extends javax.swing.JPanel {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelIdPiloto)
@@ -285,26 +318,24 @@ public class PanelF1 extends javax.swing.JPanel {
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabelFechaNac))
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelPuntosTotales)
                             .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(3, 3, 3)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(18, 18, 18)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelCodEscuderia)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabelPuntosUltimaCarrera)
-                        .addComponent(jTextFieldPuntosUltCarrera, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 202, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                    .addComponent(jLabel1)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
 
@@ -321,13 +352,13 @@ public class PanelF1 extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox jCheckBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -346,6 +377,5 @@ public class PanelF1 extends javax.swing.JPanel {
     private javax.swing.JTextField jTextFieldNacionalidad;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldPuntTotales;
-    private javax.swing.JTextField jTextFieldPuntosUltCarrera;
     // End of variables declaration//GEN-END:variables
 }

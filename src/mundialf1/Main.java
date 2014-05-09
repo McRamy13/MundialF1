@@ -5,6 +5,7 @@
  */
 package mundialf1;
 
+import mundialf1.DateRenderer;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -19,11 +20,11 @@ public class Main extends javax.swing.JFrame {
      * Creates new form Main
      */
     ModeloTabla modelo = new ModeloTabla();
+
     public Main() {
         initComponents();
 
         //Asignar la lista de datos a la tabla
-        
         modelo.setDataList(list1);
         jTable1.setModel(modelo);
         //Sólo se permite seleccionar un registro
@@ -35,11 +36,11 @@ public class Main extends javax.swing.JFrame {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 int indiceFilaSeleccionada = jTable1.getSelectedRow();
-                if(indiceFilaSeleccionada != -1){
-                Mundial mundial = new Mundial();
-                mundial = list1.get(indiceFilaSeleccionada);
-                panelF11.setMundial(mundial);
-                panelF11.showData();
+                if (indiceFilaSeleccionada != -1) {
+                    Mundial mundial = new Mundial();
+                    mundial = list1.get(indiceFilaSeleccionada);
+                    panelF11.setMundial(mundial);
+                    panelF11.showData();
                 }
             }
 
@@ -63,15 +64,26 @@ public class Main extends javax.swing.JFrame {
         entityManager1 = java.beans.Beans.isDesignTime() ? null : javax.persistence.Persistence.createEntityManagerFactory("MundialF1PU").createEntityManager();
         query1 = java.beans.Beans.isDesignTime() ? null : entityManager1.createQuery("SELECT m FROM Mundial m");
         list1 = java.beans.Beans.isDesignTime() ? java.util.Collections.emptyList() : query1.getResultList();
+        jTabbedPaneDatos = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
         panelF11 = new mundialf1.PanelF1();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jToolBar1 = new javax.swing.JToolBar();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 255));
+        jTable1.setBackground(new java.awt.Color(237, 253, 254));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -85,9 +97,101 @@ public class Main extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 625, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(6, 6, 6)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        jTabbedPaneDatos.addTab("Tabla", jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(panelF11, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(panelF11, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 32, Short.MAX_VALUE))
+        );
+
+        jTabbedPaneDatos.addTab("Pilotos", jPanel2);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jTabbedPaneDatos.addTab("Bio Piloto", jScrollPane2);
+
+        getContentPane().add(jTabbedPaneDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 550));
+
         jToolBar1.setRollover(true);
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-user-icon.png"))); // NOI18N
+        jButton3.setText("Info Piloto");
+        jButton3.setFocusable(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton3);
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-plus-icon.png"))); // NOI18N
+        jButton5.setText("Insertar");
+        jButton5.setFocusable(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton5);
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-icon.png"))); // NOI18N
+        jButton4.setText("Actualizar");
+        jButton4.setFocusable(false);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton4);
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-address-book-icon.png"))); // NOI18N
+        jButton2.setText("Tabla");
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton2);
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-cross-icon.png"))); // NOI18N
         jButton1.setText("Eliminar");
+        jButton1.setActionCommand("");
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -98,60 +202,84 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(panelF11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelF11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-archive-icon.png"))); // NOI18N
+        jButton6.setText("Bio");
+        jButton6.setFocusable(false);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton6);
+
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 650, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        //Obtener el índice de la fila seleccionada en la tabla 
-        int selectedRow = jTable1.getSelectedRow();
-        //Obtener el objeto desde la lista de datos, conociendo su posición 
-        Mundial mundial = list1.get(selectedRow);
-
-        //Iniciar una transacción con la BD 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        Mundial mundial = panelF11.newMundial();
         entityManager1.getTransaction().begin();
-        //Eliminar el objeto 
-        entityManager1.remove(mundial);
-        //Finalizar la transacción actualizando la BD 
+        //Almacenar el objeto en la BD
+        entityManager1.persist(mundial);
         entityManager1.getTransaction().commit();
 
-        //Eliminar el objeto de la lista de datos 
+        //Añadir el objeto al final de la lista de datos
+        list1.add(mundial);
+        //Informar al JTable que se ha insertado una fila al final
+        modelo.fireTableRowsInserted(list1.size() - 1, list1.size() - 1);
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Obtener el índice de la fila seleccionada en la tabla
+        int selectedRow = jTable1.getSelectedRow();
+        //Obtener el objeto desde la lista de datos, conociendo su posición
+        Mundial mundial = list1.get(selectedRow);
+
+        //Iniciar una transacción con la BD
+        entityManager1.getTransaction().begin();
+        //Eliminar el objeto
+        entityManager1.remove(mundial);
+        //Finalizar la transacción actualizando la BD
+        entityManager1.getTransaction().commit();
+
+        //Eliminar el objeto de la lista de datos
         list1.remove(mundial);
-        //Informar al JTable que se ha eliminado una fila 
-        if(selectedRow != -1){
-           modelo.fireTableRowsDeleted(selectedRow, selectedRow); 
-        }
-        
-        
-        panelF11.setMundial(mundial);
-        panelF11.showData();
+        //Informar al JTable que se ha eliminado una fila
+        modelo.fireTableRowsDeleted(selectedRow, selectedRow);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        //Obtener el índice de la fila seleccionada en la tabla 
+        int selectedRow = jTable1.getSelectedRow();
+//Obtener el objeto desde la lista de datos, conociendo su posición 
+        Mundial mundial  = list1.get(selectedRow);
+        //Rellenar sus datos 
+
+entityManager1.getTransaction().begin();
+//Actualizar el objeto en la BD 
+        entityManager1.merge(mundial);
+        entityManager1.getTransaction().commit();
+
+//Añadir el objeto al final de la lista de datos 
+        list1.set(selectedRow, mundial);
+//Informar al JTable que se ha modificado la fila seleccionada 
+        modelo.fireTableRowsUpdated(selectedRow, selectedRow);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        jTabbedPaneDatos.setSelectedIndex(1);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        jTabbedPaneDatos.setSelectedIndex(2);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTabbedPaneDatos.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -160,7 +288,7 @@ public class Main extends javax.swing.JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -191,8 +319,18 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.persistence.EntityManager entityManager1;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPaneDatos;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar1;
     private java.util.List<Mundial> list1;
     private mundialf1.PanelF1 panelF11;
