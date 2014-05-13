@@ -4,10 +4,14 @@
  * and open the template in the editor.
  */
 
-package mundialf1;
+package mundialf1.Clases;
 
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import mundialf1.Interfaces.Mundial;
+//import javax.swing.table.AbstractTimport mundialf1.Mimport un.Interfacemundialf1.Mundial;
+//sdial;
+//ableModel;
 
 /**
  *

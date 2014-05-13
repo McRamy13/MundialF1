@@ -3,12 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mundialf1;
+package mundialf1.Interfaces;
 
-import mundialf1.DateRenderer;
+import mundialf1.Clases.ModeloTabla;
+import mundialf1.Interfaces.DialogEscuderia;
+import mundialf1.Renderer.NacionalidadRenderer;
+import mundialf1.Renderer.NombreRenderer;
+import mundialf1.Renderer.PuntosRenderer;
+import java.awt.Frame;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import mundialf1.Interfaces.DialogEscuderia;
+import mundialf1.Interfaces.Mundial;
+import mundialf1.Renderer.DateRenderer;
 
 /**
  *
@@ -69,7 +77,7 @@ public class Main extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
-        panelF11 = new mundialf1.PanelF1();
+        panelF11 = new mundialf1.Interfaces.PanelF1();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jToolBar1 = new javax.swing.JToolBar();
@@ -79,6 +87,7 @@ public class Main extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -214,6 +223,18 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton6);
 
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-home-icon.png"))); // NOI18N
+        jButton7.setText("Escudería");
+        jButton7.setFocusable(false);
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton7);
+
         getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 650, 70));
 
         pack();
@@ -255,10 +276,10 @@ public class Main extends javax.swing.JFrame {
         //Obtener el índice de la fila seleccionada en la tabla 
         int selectedRow = jTable1.getSelectedRow();
 //Obtener el objeto desde la lista de datos, conociendo su posición 
-        Mundial mundial  = list1.get(selectedRow);
+        Mundial mundial = list1.get(selectedRow);
         //Rellenar sus datos 
 
-entityManager1.getTransaction().begin();
+        entityManager1.getTransaction().begin();
 //Actualizar el objeto en la BD 
         entityManager1.merge(mundial);
         entityManager1.getTransaction().commit();
@@ -280,6 +301,12 @@ entityManager1.getTransaction().begin();
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         jTabbedPaneDatos.setSelectedIndex(0);
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        Frame frameParent = Frame.getFrames()[0];
+        DialogEscuderia dialogEscuderia = new DialogEscuderia(frameParent, true);
+        dialogEscuderia.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -324,6 +351,7 @@ entityManager1.getTransaction().begin();
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -333,7 +361,7 @@ entityManager1.getTransaction().begin();
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JToolBar jToolBar1;
     private java.util.List<Mundial> list1;
-    private mundialf1.PanelF1 panelF11;
+    private mundialf1.Interfaces.PanelF1 panelF11;
     private javax.persistence.Query query1;
     // End of variables declaration//GEN-END:variables
 }

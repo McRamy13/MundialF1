@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package mundialf1;
+package mundialf1.Clases;
 
+import mundialf1.Interfaces.Mundial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -21,7 +22,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import mundialf1.Mundial;
 
 /**
  *

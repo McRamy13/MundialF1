@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package mundialf1;
+package mundialf1.Interfaces;
 
 import java.io.Serializable;
 import java.util.Date;

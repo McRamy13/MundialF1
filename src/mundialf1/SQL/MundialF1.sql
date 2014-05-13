@@ -39,3 +39,9 @@ insert into Mundial values
 (11,'Felipe Massa','Brasil','1981-04-25',false,12,'Décimo quinto  en el GP de China',5),
 (12,'Kimi Räïkkönen','Dinamarca','1979-09-17',false,11,'Duodécimo  en el GP de China',1),
 (13,'Kevin Magnussen','Dinamarca','1991-09-05',false,20,'Decimo tercero en el GP de China',6);
+
+
+insert into Escuderia values
+
+(1,'Ferrari',1,12,10000000.56,'1975-07-04'),
+(2,'Mercedes',2,3,9000000,'2012-07-04'),

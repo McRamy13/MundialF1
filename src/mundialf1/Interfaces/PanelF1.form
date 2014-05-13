@@ -75,10 +75,8 @@
                                   <Component id="jTextFieldPuntTotales" pref="100" max="32767" attributes="0"/>
                                   <Component id="jDateChooser1" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                  <Component id="jTextFieldIdPiloto" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
-                                  <Component id="jTextFieldNombre" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="jTextFieldIdPiloto" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
+                              <Component id="jTextFieldNombre" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -143,10 +141,10 @@
                   <EmptySpace pref="97" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelCodEscuderia" min="-2" max="-2" attributes="0"/>
+                      <Component id="jCheckBox1" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jTextFieldCodEscuderia" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabelPuntosUltimaCarrera" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jCheckBox1" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
