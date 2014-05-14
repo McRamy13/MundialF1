@@ -14,6 +14,7 @@ import java.sql.Statement;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
 /**
@@ -30,7 +31,7 @@ public class DialogEscuderia extends javax.swing.JDialog {
     private final String DB_NAME = "MundialF1";
     private final String DB_USER = "root";
     private final String DB_PASSWORD = "";
-
+    private Mundial mundialSelect = null;
     /**
      * Creates new form dialogListaProductos
      */
@@ -40,6 +41,10 @@ public class DialogEscuderia extends javax.swing.JDialog {
         setLocationRelativeTo(parent);
         conectarBD();
         loadList();
+    }
+
+    public Mundial getMundialSelect() {
+        return mundialSelect;
     }
 
     private void conectarBD() {
@@ -66,6 +71,11 @@ public class DialogEscuderia extends javax.swing.JDialog {
     }
 
     private void loadList() {
+        //Crear un modelo para la lista
+        DefaultListModel listModel = new DefaultListModel();
+        jList1.setModel(listModel);
+        //Asignar el renderer para mostrar los objetos como se desea
+        //jList1.setCellRenderer();
         String sentecia = "select * form escuderia";
 
         try {
@@ -85,6 +95,9 @@ public class DialogEscuderia extends javax.swing.JDialog {
 
                 Date fechaCreacion = resultados.getDate("fecha_creacion");
                 
+                
+                //Mundial mundial = new Mundial(nomEscuderia,presupuesto,fechaCreacion);
+               // listModel.addElement(mundial);
                 System.out.println(nomEscuderia);
                 System.out.println(presupuesto);
                 System.out.println(fechaCreacion);
@@ -138,6 +151,11 @@ public class DialogEscuderia extends javax.swing.JDialog {
         );
 
         jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("jLabel1");
 
@@ -185,6 +203,14 @@ public class DialogEscuderia extends javax.swing.JDialog {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         //Guardar el producto que está seleccionado en la lista
+        mundialSelect = (Mundial)jList1.getSelectedValue();
+        //Cerrar la ventana de diálogo
+        setVisible(false);
+        dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -11,6 +11,7 @@ import mundialf1.Renderer.NacionalidadRenderer;
 import mundialf1.Renderer.NombreRenderer;
 import mundialf1.Renderer.PuntosRenderer;
 import java.awt.Frame;
+import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -242,7 +243,8 @@ public class Main extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         Mundial mundial = panelF11.newMundial();
-        entityManager1.getTransaction().begin();
+        if(panelF11.checkMundial()){
+         entityManager1.getTransaction().begin();
         //Almacenar el objeto en la BD
         entityManager1.persist(mundial);
         entityManager1.getTransaction().commit();
@@ -250,7 +252,11 @@ public class Main extends javax.swing.JFrame {
         //Añadir el objeto al final de la lista de datos
         list1.add(mundial);
         //Informar al JTable que se ha insertado una fila al final
-        modelo.fireTableRowsInserted(list1.size() - 1, list1.size() - 1);
+        modelo.fireTableRowsInserted(list1.size() - 1, list1.size() - 1); 
+        }else{
+            JOptionPane.showMessageDialog(this, "Debe introducir algún dato para continuar.");
+        }
+        
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

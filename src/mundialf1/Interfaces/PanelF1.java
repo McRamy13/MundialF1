@@ -8,6 +8,7 @@ package mundialf1.Interfaces;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -31,9 +32,47 @@ public class PanelF1 extends javax.swing.JPanel {
     private final int MASSA = 11;
     private final int RAIKKONEN = 12;
     private Mundial mundial;
+    private boolean check;
 
     public PanelF1() {
         initComponents();
+    }
+
+    public boolean checkMundial() {
+
+        if (jTextFieldIdPiloto.getText().isEmpty() || jTextFieldIdPiloto.getText().matches("[A-Za-z]")) {
+            check = false;
+        } else {
+            check = true;
+        }
+        if (jTextFieldNombre.getText().isEmpty()) {
+            check = false;
+        } else {
+            check = true;
+        } 
+        if (jTextFieldPuntTotales.getText().isEmpty() || jTextFieldPuntTotales.getText().matches("[A-Za-z]")) {
+            check = false;
+        } else {
+            check = true;
+        }
+        if (jTextFieldCodEscuderia.getText().isEmpty() || jTextFieldCodEscuderia.getText().matches("[A-Za-z]")){
+            check = false;
+        } else {
+            check = true;
+        }
+        if(jTextFieldNacionalidad.getText().isEmpty() || jTextFieldNacionalidad.getText().matches("[A-Za-z]")){
+            check = false;
+        }
+            check = true;
+        if(jTextAreaObservaciones.getText().isEmpty()){
+            check = false;
+        }
+            check = true;
+         
+            
+         
+        return check;
+        
     }
 
     public Mundial getMundial() {
@@ -49,13 +88,12 @@ public class PanelF1 extends javax.swing.JPanel {
         mundial.setNacionalidad(Integer.valueOf(jTextFieldNacionalidad.getText()));
         mundial.setPuntosTotales(Integer.valueOf(jTextFieldPuntTotales.getText()));
         mundial.setCodEscuderia(Integer.valueOf(jTextFieldIdPiloto.getText()));
-        
-        if(jCheckBox1.isSelected()){
-          mundial.setPuntosUltimaCarrera(true);  
-        }else{
-          mundial.setPuntosUltimaCarrera(false);  
+
+        if (jCheckBox1.isSelected()) {
+            mundial.setPuntosUltimaCarrera(true);
+        } else {
+            mundial.setPuntosUltimaCarrera(false);
         }
-        
 
         return mundial;
     }
@@ -73,13 +111,12 @@ public class PanelF1 extends javax.swing.JPanel {
         jTextFieldPuntTotales.setText(String.valueOf(mundial.getPuntosTotales()));
         jTextFieldCodEscuderia.setText(String.valueOf(mundial.getCodEscuderia()));
         jTextAreaObservaciones.setText(mundial.getObservaciones());
-        
-        if(mundial.getPuntosUltimaCarrera()){
+
+        if (mundial.getPuntosUltimaCarrera()) {
             jCheckBox1.setSelected(true);
-        }else{
-           jCheckBox1.setSelected(false); 
+        } else {
+            jCheckBox1.setSelected(false);
         }
-        
 
         int idPiloto = mundial.getIdPiloto();
 
@@ -192,7 +229,7 @@ public class PanelF1 extends javax.swing.JPanel {
                 } catch (Exception e) {
                 }
                 break;
-                
+
             default:
                 jLabel2.setIcon(null);
         }
