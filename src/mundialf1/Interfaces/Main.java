@@ -5,8 +5,8 @@
  */
 package mundialf1.Interfaces;
 
+import mundialf1.Clases.Mundial;
 import mundialf1.Clases.ModeloTabla;
-import mundialf1.Interfaces.DialogEscuderia;
 import mundialf1.Renderer.NacionalidadRenderer;
 import mundialf1.Renderer.NombreRenderer;
 import mundialf1.Renderer.PuntosRenderer;
@@ -15,8 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import mundialf1.Interfaces.DialogEscuderia;
-import mundialf1.Interfaces.Mundial;
+import mundialf1.Clases.Escuderia;
+
 import mundialf1.Renderer.DateRenderer;
 
 /**
@@ -28,11 +28,11 @@ public class Main extends javax.swing.JFrame {
     /**
      * Creates new form Main
      */
+    
     ModeloTabla modelo = new ModeloTabla();
-
     public Main() {
         initComponents();
-
+        
         //Asignar la lista de datos a la tabla
         modelo.setDataList(list1);
         jTable1.setModel(modelo);
@@ -58,6 +58,13 @@ public class Main extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(4).setCellRenderer(new PuntosRenderer());
         jTable1.getColumnModel().getColumn(0).setCellRenderer(new NombreRenderer());
         jTable1.getColumnModel().getColumn(2).setCellRenderer(new NacionalidadRenderer());
+        
+        jTable1.getColumnModel().getColumn(0).setPreferredWidth(156);
+        jTable1.getColumnModel().getColumn(1).setPreferredWidth(67);
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(82);
+        jTable1.getColumnModel().getColumn(3).setPreferredWidth(58);
+        
+        //Sólo se permite seleccionar un registro
 
     }
 
@@ -83,12 +90,13 @@ public class Main extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jToolBar1 = new javax.swing.JToolBar();
         jButton3 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -163,6 +171,42 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton3);
 
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-home-icon.png"))); // NOI18N
+        jButton7.setText("Escudería");
+        jButton7.setFocusable(false);
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton7);
+
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-archive-icon.png"))); // NOI18N
+        jButton6.setText("Bio");
+        jButton6.setFocusable(false);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton6);
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-address-book-icon.png"))); // NOI18N
+        jButton2.setText("Tabla");
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton2);
+
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-plus-icon.png"))); // NOI18N
         jButton5.setText("Insertar");
         jButton5.setFocusable(false);
@@ -187,18 +231,6 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton4);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-address-book-icon.png"))); // NOI18N
-        jButton2.setText("Tabla");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton2);
-
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-cross-icon.png"))); // NOI18N
         jButton1.setText("Eliminar");
         jButton1.setActionCommand("");
@@ -212,29 +244,16 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton1);
 
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-archive-icon.png"))); // NOI18N
-        jButton6.setText("Bio");
-        jButton6.setFocusable(false);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        jButton8.setText("jButton8");
+        jButton8.setFocusable(false);
+        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                jButton8ActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton6);
-
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-home-icon.png"))); // NOI18N
-        jButton7.setText("Escudería");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton7);
+        jToolBar1.add(jButton8);
 
         getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 650, 70));
 
@@ -314,6 +333,11 @@ public class Main extends javax.swing.JFrame {
         dialogEscuderia.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        int idEscuderia = panelF11.getEscuderia().getCodEscuderia();
+        Escuderia escuderia = entityManager1.find(Escuderia.class, idEscuderia);
+    }//GEN-LAST:event_jButton8ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -358,6 +382,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

@@ -6,7 +6,6 @@
 
 package mundialf1.Clases;
 
-import mundialf1.Interfaces.Mundial;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
@@ -14,8 +13,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -50,10 +47,14 @@ public class Escuderia implements Serializable {
     @Column(name = "fecha_creacion")
     @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
-    @JoinColumn(name = "id_piloto", referencedColumnName = "id_piloto")
-    @ManyToOne
-    private Mundial idPiloto;
 
+    public Escuderia(Integer codEscuderia, String nombreEscuderia, BigDecimal presupuesto, Date fechaCreacion) {
+        this.codEscuderia = codEscuderia;
+        this.nombreEscuderia = nombreEscuderia;
+        this.presupuesto = presupuesto;
+        this.fechaCreacion = fechaCreacion;
+    }
+    
     public Escuderia() {
     }
 
@@ -93,14 +94,6 @@ public class Escuderia implements Serializable {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Mundial getIdPiloto() {
-        return idPiloto;
-    }
-
-    public void setIdPiloto(Mundial idPiloto) {
-        this.idPiloto = idPiloto;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -123,7 +116,7 @@ public class Escuderia implements Serializable {
 
     @Override
     public String toString() {
-        return "mundialf1.Escuderia[ codEscuderia=" + codEscuderia + " ]";
+        return "mundialf1.Clases.Escuderia[ codEscuderia=" + codEscuderia + " ]";
     }
     
 }

@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package mundialf1.Interfaces;
+package mundialf1.Clases;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -155,7 +155,7 @@ public class Mundial implements Serializable {
 
     @Override
     public String toString() {
-        return "mundialf1.Mundial[ idPiloto=" + idPiloto + " ]";
+        return "mundialf1.Clases.Mundial[ idPiloto=" + idPiloto + " ]";
     }
     
 }

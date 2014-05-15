@@ -16,12 +16,9 @@ drop table if exists Escuderia;
 create table if not exists Escuderia(
 	cod_escuderia int unsigned primary key,
 	nombre_escuderia varchar(30),
-	id_piloto int,
-	id_piloto2 int unsigned,
 	presupuesto decimal (10,2),
 	fecha_creacion date,
-	constraint fk_idPiloto foreign key (id_piloto) references Mundial(id_piloto)
-	#foreign key (id_piloto) references Mundial(id_piloto)
+
 );
 
 insert into Mundial values

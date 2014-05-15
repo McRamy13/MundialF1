@@ -6,6 +6,7 @@
 package mundialf1.Interfaces;
 
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,6 +17,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
+import mundialf1.Clases.Escuderia;
+import mundialf1.Renderer.EscuderiaListRenderer;
 
 /**
  *
@@ -31,7 +34,7 @@ public class DialogEscuderia extends javax.swing.JDialog {
     private final String DB_NAME = "MundialF1";
     private final String DB_USER = "root";
     private final String DB_PASSWORD = "";
-    private Mundial mundialSelect = null;
+    private Escuderia escuderiaSelect = null;
     /**
      * Creates new form dialogListaProductos
      */
@@ -43,8 +46,8 @@ public class DialogEscuderia extends javax.swing.JDialog {
         loadList();
     }
 
-    public Mundial getMundialSelect() {
-        return mundialSelect;
+    public Escuderia getEscuderiaSelect() {
+        return escuderiaSelect;
     }
 
     private void conectarBD() {
@@ -74,36 +77,50 @@ public class DialogEscuderia extends javax.swing.JDialog {
         //Crear un modelo para la lista
         DefaultListModel listModel = new DefaultListModel();
         jList1.setModel(listModel);
+        jList1.setCellRenderer(new EscuderiaListRenderer());
         //Asignar el renderer para mostrar los objetos como se desea
         //jList1.setCellRenderer();
-        String sentecia = "select * form escuderia";
+        
 
+//        try {
+//            Statement stmt = conexion.createStatement();
+//            ResultSet rsProductos = stmt.executeQuery(
+//                    "SELECT * FROM Escuderia");
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DialogEscuderia.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+       
         try {
-            Statement sentenciaSQL = conexion.createStatement();
-        } catch (SQLException ex) {
-            Logger.getLogger(DialogEscuderia.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Statement sentenciaSQL;
-        try {
+            Statement sentenciaSQL;
             sentenciaSQL = conexion.createStatement();
-            ResultSet resultados = sentenciaSQL.executeQuery("SELECT nombre_escuderia, presupuesto, fecha_creacion FROM escuderia");
+            ResultSet resultados = sentenciaSQL.executeQuery("SELECT * FROM Escuderia");
             while (resultados.next()) {
-
+                
+                int codEscuderia = resultados.getInt("cod_escuderia");
+                
                 String nomEscuderia = resultados.getString("nombre_escuderia");
 
-                float presupuesto = resultados.getFloat("presupuesto");
+                BigDecimal presupuesto = resultados.getBigDecimal("presupuesto");
 
                 Date fechaCreacion = resultados.getDate("fecha_creacion");
                 
                 
+                Escuderia escuderia = new Escuderia(codEscuderia,nomEscuderia,presupuesto,fechaCreacion);
+                listModel.addElement(escuderia);
                 //Mundial mundial = new Mundial(nomEscuderia,presupuesto,fechaCreacion);
                // listModel.addElement(mundial);
                 System.out.println(nomEscuderia);
                 System.out.println(presupuesto);
                 System.out.println(fechaCreacion);
             }
+            
+            System.out.println(listModel.getSize());
+
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(DialogEscuderia.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Se ha producido un error al consultar la base de datos", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }
@@ -206,7 +223,7 @@ public class DialogEscuderia extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          //Guardar el producto que está seleccionado en la lista
-        mundialSelect = (Mundial)jList1.getSelectedValue();
+        escuderiaSelect = (Escuderia)jList1.getSelectedValue();
         //Cerrar la ventana de diálogo
         setVisible(false);
         dispose();

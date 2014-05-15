@@ -4,6 +4,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>mundialf1.Interfaces.Mundial</class>
     <class>mundialf1.Clases.Escuderia</class>
+    <class>mundialf1.Clases.Mundial</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mundialf1?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.password" value=""/>

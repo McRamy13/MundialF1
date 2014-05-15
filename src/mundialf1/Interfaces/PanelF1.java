@@ -5,10 +5,11 @@
  */
 package mundialf1.Interfaces;
 
+import mundialf1.Clases.Mundial;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import mundialf1.Clases.Escuderia;
 
 /**
  *
@@ -33,7 +34,8 @@ public class PanelF1 extends javax.swing.JPanel {
     private final int RAIKKONEN = 12;
     private Mundial mundial;
     private boolean check;
-
+    Escuderia escuderia = new Escuderia();
+    
     public PanelF1() {
         initComponents();
     }
@@ -74,7 +76,14 @@ public class PanelF1 extends javax.swing.JPanel {
         return check;
         
     }
-
+    public Escuderia getEscuderia(){
+        return escuderia;
+    }
+    public void showEscuderia(){
+        if(escuderia != null) {
+            jTextFieldIdPiloto.setText(escuderia.getCodEscuderia() + " - " + escuderia.getNombreEscuderia());
+        }
+    }
     public Mundial getMundial() {
         return mundial;
     }
