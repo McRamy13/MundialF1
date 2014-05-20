@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import mundialf1.Clases.CambiarCursor;
 import mundialf1.Clases.Escuderia;
 
 import mundialf1.Renderer.DateRenderer;
@@ -30,6 +31,8 @@ public class Main extends javax.swing.JFrame {
      */
     
     ModeloTabla modelo = new ModeloTabla();
+    Escuderia escuderia = new Escuderia();
+    
     public Main() {
         initComponents();
         
@@ -65,8 +68,11 @@ public class Main extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(3).setPreferredWidth(58);
         
         //Sólo se permite seleccionar un registro
+        
+       
 
     }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -90,16 +96,19 @@ public class Main extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jToolBar1 = new javax.swing.JToolBar();
         jButton3 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 204));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTabbedPaneDatos.setBackground(new java.awt.Color(255, 255, 204));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
 
         jTable1.setBackground(new java.awt.Color(237, 253, 254));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -134,6 +143,10 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPaneDatos.addTab("Tabla", jPanel1);
 
+        jPanel2.setBackground(new java.awt.Color(255, 255, 204));
+
+        panelF11.setBackground(new java.awt.Color(255, 255, 204));
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -157,8 +170,11 @@ public class Main extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPaneDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 550));
 
+        jToolBar1.setBackground(new java.awt.Color(255, 255, 204));
         jToolBar1.setRollover(true);
+        jToolBar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
+        jButton3.setBackground(new java.awt.Color(255, 255, 204));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-user-icon.png"))); // NOI18N
         jButton3.setText("Info Piloto");
         jButton3.setFocusable(false);
@@ -171,18 +187,7 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton3);
 
-        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-home-icon.png"))); // NOI18N
-        jButton7.setText("Escudería");
-        jButton7.setFocusable(false);
-        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton7);
-
+        jButton6.setBackground(new java.awt.Color(255, 255, 204));
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-archive-icon.png"))); // NOI18N
         jButton6.setText("Bio");
         jButton6.setFocusable(false);
@@ -195,6 +200,7 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton6);
 
+        jButton2.setBackground(new java.awt.Color(255, 255, 204));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-address-book-icon.png"))); // NOI18N
         jButton2.setText("Tabla");
         jButton2.setFocusable(false);
@@ -207,6 +213,7 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton2);
 
+        jButton5.setBackground(new java.awt.Color(255, 255, 204));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-plus-icon.png"))); // NOI18N
         jButton5.setText("Insertar");
         jButton5.setFocusable(false);
@@ -219,6 +226,7 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton5);
 
+        jButton4.setBackground(new java.awt.Color(255, 255, 204));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-icon.png"))); // NOI18N
         jButton4.setText("Actualizar");
         jButton4.setFocusable(false);
@@ -231,6 +239,7 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton4);
 
+        jButton1.setBackground(new java.awt.Color(255, 255, 204));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-cross-icon.png"))); // NOI18N
         jButton1.setText("Eliminar");
         jButton1.setActionCommand("");
@@ -244,18 +253,7 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButton1);
 
-        jButton8.setText("jButton8");
-        jButton8.setFocusable(false);
-        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        jToolBar1.add(jButton8);
-
-        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 570, 650, 70));
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 350, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -327,17 +325,6 @@ public class Main extends javax.swing.JFrame {
         jTabbedPaneDatos.setSelectedIndex(0);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        Frame frameParent = Frame.getFrames()[0];
-        DialogEscuderia dialogEscuderia = new DialogEscuderia(frameParent, true);
-        dialogEscuderia.setVisible(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        int idEscuderia = panelF11.getEscuderia().getCodEscuderia();
-        Escuderia escuderia = entityManager1.find(Escuderia.class, idEscuderia);
-    }//GEN-LAST:event_jButton8ActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -381,8 +368,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

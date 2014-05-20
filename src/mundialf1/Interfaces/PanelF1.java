@@ -5,6 +5,7 @@
  */
 package mundialf1.Interfaces;
 
+import java.awt.Frame;
 import mundialf1.Clases.Mundial;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -35,7 +36,7 @@ public class PanelF1 extends javax.swing.JPanel {
     private Mundial mundial;
     private boolean check;
     Escuderia escuderia = new Escuderia();
-    
+
     public PanelF1() {
         initComponents();
     }
@@ -51,39 +52,34 @@ public class PanelF1 extends javax.swing.JPanel {
             check = false;
         } else {
             check = true;
-        } 
+        }
         if (jTextFieldPuntTotales.getText().isEmpty() || jTextFieldPuntTotales.getText().matches("[A-Za-z]")) {
             check = false;
         } else {
             check = true;
         }
-        if (jTextFieldCodEscuderia.getText().isEmpty() || jTextFieldCodEscuderia.getText().matches("[A-Za-z]")){
+        if (jTextFieldCodEscuderia.getText().isEmpty() || jTextFieldCodEscuderia.getText().matches("[A-Za-z]")) {
             check = false;
         } else {
             check = true;
         }
-        if(jTextFieldNacionalidad.getText().isEmpty() || jTextFieldNacionalidad.getText().matches("[A-Za-z]")){
+        if (jTextFieldNacionalidad.getText().isEmpty() || jTextFieldNacionalidad.getText().matches("[A-Za-z]")) {
             check = false;
         }
-            check = true;
-        if(jTextAreaObservaciones.getText().isEmpty()){
+        check = true;
+        if (jTextAreaObservaciones.getText().isEmpty()) {
             check = false;
         }
-            check = true;
-         
-            
-         
+        check = true;
+
         return check;
-        
+
     }
-    public Escuderia getEscuderia(){
+
+    public Escuderia getEscuderia() {
         return escuderia;
     }
-    public void showEscuderia(){
-        if(escuderia != null) {
-            jTextFieldIdPiloto.setText(escuderia.getCodEscuderia() + " - " + escuderia.getNombreEscuderia());
-        }
-    }
+
     public Mundial getMundial() {
         return mundial;
     }
@@ -242,6 +238,16 @@ public class PanelF1 extends javax.swing.JPanel {
             default:
                 jLabel2.setIcon(null);
         }
+
+
+        
+
+}
+
+public void showEscuderia() {
+        if (escuderia != null) {
+            jTextFieldCodEscuderia.setText(escuderia.getCodEscuderia() + " - " + escuderia.getNombreEscuderia());
+        }
     }
 
     /**
@@ -272,6 +278,7 @@ public class PanelF1 extends javax.swing.JPanel {
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jLabel2 = new javax.swing.JLabel();
         jCheckBox1 = new javax.swing.JCheckBox();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(251, 251, 229));
 
@@ -290,7 +297,13 @@ public class PanelF1 extends javax.swing.JPanel {
 
         jLabelPuntosTotales.setText("Puntos totales:");
 
-        jLabelCodEscuderia.setText("Código de escudería");
+        jLabelCodEscuderia.setText("Escudería:");
+
+        jTextFieldPuntTotales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldPuntTotalesActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Observaciones:");
 
@@ -300,6 +313,13 @@ public class PanelF1 extends javax.swing.JPanel {
         jTextAreaObservaciones.setRows(5);
         jScrollPane1.setViewportView(jTextAreaObservaciones);
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-home-icon.png"))); // NOI18N
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -307,6 +327,10 @@ public class PanelF1 extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(51, 51, 51)
+                        .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelIdPiloto)
@@ -318,28 +342,25 @@ public class PanelF1 extends javax.swing.JPanel {
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabelPuntosUltimaCarrera))
-                            .addComponent(jTextFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jTextFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+                                        .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jCheckBox1)
-                                .addGap(0, 281, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(51, 51, 51)
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabelPuntosUltimaCarrera)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jCheckBox1))
+                                    .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -367,17 +388,18 @@ public class PanelF1 extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelPuntosTotales)
                             .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelCodEscuderia)
-                    .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabelPuntosUltimaCarrera)))
-                .addGap(18, 18, 18)
+                    .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelPuntosUltimaCarrera, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -401,8 +423,21 @@ public class PanelF1 extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jTextFieldPuntTotalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPuntTotalesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPuntTotalesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        Frame frameParent = Frame.getFrames()[0];
+        DialogEscuderia dialogEscuderia = new DialogEscuderia(frameParent, true);
+        dialogEscuderia.setVisible(true);
+        escuderia = dialogEscuderia.getEscuderiaSelect();
+        showEscuderia();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
