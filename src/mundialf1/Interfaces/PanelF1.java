@@ -239,12 +239,9 @@ public class PanelF1 extends javax.swing.JPanel {
                 jLabel2.setIcon(null);
         }
 
+    }
 
-        
-
-}
-
-public void showEscuderia() {
+    public void showEscuderia() {
         if (escuderia != null) {
             jTextFieldCodEscuderia.setText(escuderia.getCodEscuderia() + " - " + escuderia.getNombreEscuderia());
         }
