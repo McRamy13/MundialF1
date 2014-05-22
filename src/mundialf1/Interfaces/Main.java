@@ -5,6 +5,8 @@
  */
 package mundialf1.Interfaces;
 
+import java.awt.Color;
+import java.awt.Font;
 import mundialf1.Clases.Mundial;
 import mundialf1.Clases.ModeloTabla;
 import mundialf1.Renderer.NacionalidadRenderer;
@@ -59,7 +61,6 @@ public class Main extends javax.swing.JFrame {
         jTable1.getColumnModel().getColumn(4).setCellRenderer(new PuntosRenderer());
         jTable1.getColumnModel().getColumn(0).setCellRenderer(new NombreRenderer());
         jTable1.getColumnModel().getColumn(2).setCellRenderer(new NacionalidadRenderer());
-
         jTable1.getColumnModel().getColumn(0).setPreferredWidth(156);
         jTable1.getColumnModel().getColumn(1).setPreferredWidth(67);
         jTable1.getColumnModel().getColumn(2).setPreferredWidth(82);
@@ -161,7 +162,7 @@ public class Main extends javax.swing.JFrame {
 
         jButtonPiloto.setBackground(new java.awt.Color(255, 255, 204));
         jButtonPiloto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-user-icon.png"))); // NOI18N
-        jButtonPiloto.setText("Info Piloto");
+        jButtonPiloto.setToolTipText("Info de Piloto");
         jButtonPiloto.setFocusable(false);
         jButtonPiloto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonPiloto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -174,7 +175,7 @@ public class Main extends javax.swing.JFrame {
 
         jButtonTabla.setBackground(new java.awt.Color(255, 255, 204));
         jButtonTabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-address-book-icon.png"))); // NOI18N
-        jButtonTabla.setText("Tabla");
+        jButtonTabla.setToolTipText("Ir a tabla");
         jButtonTabla.setFocusable(false);
         jButtonTabla.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonTabla.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -187,7 +188,7 @@ public class Main extends javax.swing.JFrame {
 
         jButtonInsertar.setBackground(new java.awt.Color(255, 255, 204));
         jButtonInsertar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-plus-icon.png"))); // NOI18N
-        jButtonInsertar.setText("Insertar");
+        jButtonInsertar.setToolTipText("Insertar registro");
         jButtonInsertar.setFocusable(false);
         jButtonInsertar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonInsertar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -200,7 +201,7 @@ public class Main extends javax.swing.JFrame {
 
         jButtonActualizar.setBackground(new java.awt.Color(255, 255, 204));
         jButtonActualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-icon.png"))); // NOI18N
-        jButtonActualizar.setText("Actualizar");
+        jButtonActualizar.setToolTipText("Actualizar Registro");
         jButtonActualizar.setFocusable(false);
         jButtonActualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButtonActualizar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -213,7 +214,7 @@ public class Main extends javax.swing.JFrame {
 
         jButtonEliminar.setBackground(new java.awt.Color(255, 255, 204));
         jButtonEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-document-cross-icon.png"))); // NOI18N
-        jButtonEliminar.setText("Eliminar");
+        jButtonEliminar.setToolTipText("Eliminar Registro");
         jButtonEliminar.setActionCommand("");
         jButtonEliminar.setFocusable(false);
         jButtonEliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -225,7 +226,7 @@ public class Main extends javax.swing.JFrame {
         });
         jToolBar1.add(jButtonEliminar);
 
-        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 550, 350, 70));
+        getContentPane().add(jToolBar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 550, 350, 70));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -238,24 +239,24 @@ public class Main extends javax.swing.JFrame {
             //Almacenar el objeto en la BD
             entityManager1.persist(mundial);
             entityManager1.getTransaction().commit();
-
             //Añadir el objeto al final de la lista de datos
+            
             list1.add(mundial);
             texto += mundial.getNombrePiloto();
-            
             texto += " en el registro.";
             //Informar al JTable que se ha insertado una fila al final
             modelo.fireTableRowsInserted(list1.size() - 1, list1.size() - 1);
         } else {
             JOptionPane.showMessageDialog(this, "Debe introducir algún dato para continuar.");
-        }
+        
 
         GestionMovimientos gestionMovimientos = new GestionMovimientos();
         gestionMovimientos.escribirArchivo(texto);
 
     }//GEN-LAST:event_jButtonInsertarActionPerformed
-
+    }
     private void jButtonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEliminarActionPerformed
+        String texto = "Se ha eliminado: ";
         //Obtener el índice de la fila seleccionada en la tabla
         int selectedRow = jTable1.getSelectedRow();
         //Obtener el objeto desde la lista de datos, conociendo su posición

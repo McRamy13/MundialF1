@@ -61,7 +61,6 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabelIdPiloto" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelNombre" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelNacionalidad" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabelFechaNac" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -77,7 +76,6 @@
                                           <Component id="jTextFieldPuntTotales" pref="100" max="32767" attributes="0"/>
                                           <Component id="jDateChooser1" max="32767" attributes="0"/>
                                       </Group>
-                                      <Component id="jTextFieldIdPiloto" alignment="0" min="-2" pref="99" max="-2" attributes="0"/>
                                       <Component id="jTextFieldNombre" alignment="0" min="-2" pref="200" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace pref="157" max="32767" attributes="0"/>
@@ -108,28 +106,21 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabelNombre" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldNombre" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabelIdPiloto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jTextFieldIdPiloto" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabelNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jTextFieldNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabelNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldNombre" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabelNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldNacionalidad" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="jLabelFechaNac" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabelFechaNac" min="-2" max="-2" attributes="0"/>
                               <Component id="jDateChooser1" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelPuntosTotales" min="-2" max="-2" attributes="0"/>
                               <Component id="jTextFieldPuntTotales" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -144,7 +135,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="11" max="32767" attributes="0"/>
+                  <EmptySpace pref="14" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabelPuntosUltimaCarrera" alignment="1" min="-2" max="-2" attributes="0"/>
                       <Component id="jCheckBox1" alignment="1" min="-2" pref="20" max="-2" attributes="0"/>
@@ -160,11 +151,6 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="jLabelIdPiloto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Id Piloto:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelNombre">
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombre:"/>
@@ -194,8 +180,6 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Escuder&#xed;a:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="jTextFieldIdPiloto">
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldNombre">
         </Component>
@@ -244,6 +228,7 @@
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/resources/blue-home-icon.png"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Ir a escuder&#xed;a"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>

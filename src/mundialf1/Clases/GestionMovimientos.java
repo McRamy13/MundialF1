@@ -21,9 +21,10 @@ public class GestionMovimientos {
         try {
     //Crear un objeto BufferedWriter. Si ya existe el fichero, 
             //  se borra automáticamente su contenido anterior.
-            bw = new BufferedWriter(new FileWriter(nombreFichero));
+            bw = new BufferedWriter(new FileWriter(nombreFichero,true));
+            
             //Escrbir en el fichero el texto con un salto de línea
-            bw.write(texto + "\n");
+            bw.write(texto + "\r\n");
         } catch (Exception e) {
             System.out.println("Error de escritura del fichero");
             System.out.println(e.getMessage());

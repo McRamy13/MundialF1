@@ -43,11 +43,6 @@ public class PanelF1 extends javax.swing.JPanel {
 
     public boolean checkMundial() {
 
-        if (jTextFieldIdPiloto.getText().isEmpty() || jTextFieldIdPiloto.getText().matches("[A-Za-z]")) {
-            check = false;
-        } else {
-            check = true;
-        }
         if (jTextFieldNombre.getText().isEmpty()) {
             check = false;
         } else {
@@ -87,12 +82,10 @@ public class PanelF1 extends javax.swing.JPanel {
     public Mundial newMundial() {
         Mundial mundial = new Mundial();
         //Rellenar sus datos
-        mundial.setIdPiloto(Integer.valueOf(jTextFieldIdPiloto.getText()));
         mundial.setNombrePiloto(jTextFieldNombre.getText());
         mundial.setFechaNac(jDateChooser1.getDate());
         mundial.setNacionalidad(Integer.valueOf(jTextFieldNacionalidad.getText()));
         mundial.setPuntosTotales(Integer.valueOf(jTextFieldPuntTotales.getText()));
-        mundial.setCodEscuderia(Integer.valueOf(jTextFieldIdPiloto.getText()));
 
         if (jCheckBox1.isSelected()) {
             mundial.setPuntosUltimaCarrera(true);
@@ -109,7 +102,6 @@ public class PanelF1 extends javax.swing.JPanel {
 
     public void showData() {
         //Poner los datos de la misma manera. 
-        jTextFieldIdPiloto.setText(String.valueOf(mundial.getIdPiloto()));
         jTextFieldNombre.setText(mundial.getNombrePiloto());
         jTextFieldNacionalidad.setText(String.valueOf(mundial.getNacionalidad()));
         jDateChooser1.setDate(mundial.getFechaNac());
@@ -257,14 +249,12 @@ public class PanelF1 extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabelIdPiloto = new javax.swing.JLabel();
         jLabelNombre = new javax.swing.JLabel();
         jLabelNacionalidad = new javax.swing.JLabel();
         jLabelFechaNac = new javax.swing.JLabel();
         jLabelPuntosUltimaCarrera = new javax.swing.JLabel();
         jLabelPuntosTotales = new javax.swing.JLabel();
         jLabelCodEscuderia = new javax.swing.JLabel();
-        jTextFieldIdPiloto = new javax.swing.JTextField();
         jTextFieldNombre = new javax.swing.JTextField();
         jTextFieldNacionalidad = new javax.swing.JTextField();
         jTextFieldPuntTotales = new javax.swing.JTextField();
@@ -281,8 +271,6 @@ public class PanelF1 extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(254, 254, 244));
         jPanel1.setForeground(new java.awt.Color(255, 255, 204));
-
-        jLabelIdPiloto.setText("Id Piloto:");
 
         jLabelNombre.setText("Nombre:");
 
@@ -311,6 +299,7 @@ public class PanelF1 extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTextAreaObservaciones);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resources/blue-home-icon.png"))); // NOI18N
+        jButton1.setToolTipText("Ir a escudería");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -330,7 +319,6 @@ public class PanelF1 extends javax.swing.JPanel {
                         .addComponent(jScrollPane1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelIdPiloto)
                             .addComponent(jLabelNombre)
                             .addComponent(jLabelNacionalidad)
                             .addComponent(jLabelFechaNac)
@@ -344,7 +332,6 @@ public class PanelF1 extends javax.swing.JPanel {
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
                                         .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -365,23 +352,18 @@ public class PanelF1 extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelNombre)
+                            .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelIdPiloto)
-                            .addComponent(jTextFieldIdPiloto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabelNacionalidad)
+                            .addComponent(jTextFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelNombre)
-                                    .addComponent(jTextFieldNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabelNacionalidad)
-                                    .addComponent(jTextFieldNacionalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabelFechaNac))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelFechaNac)
                             .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(28, 28, 28)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelPuntosTotales)
                             .addComponent(jTextFieldPuntTotales, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -392,7 +374,7 @@ public class PanelF1 extends javax.swing.JPanel {
                     .addComponent(jTextFieldCodEscuderia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabelPuntosUltimaCarrera, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -441,7 +423,6 @@ public class PanelF1 extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabelCodEscuderia;
     private javax.swing.JLabel jLabelFechaNac;
-    private javax.swing.JLabel jLabelIdPiloto;
     private javax.swing.JLabel jLabelNacionalidad;
     private javax.swing.JLabel jLabelNombre;
     private javax.swing.JLabel jLabelPuntosTotales;
@@ -450,7 +431,6 @@ public class PanelF1 extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaObservaciones;
     private javax.swing.JTextField jTextFieldCodEscuderia;
-    private javax.swing.JTextField jTextFieldIdPiloto;
     private javax.swing.JTextField jTextFieldNacionalidad;
     private javax.swing.JTextField jTextFieldNombre;
     private javax.swing.JTextField jTextFieldPuntTotales;
